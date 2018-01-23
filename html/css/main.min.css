@@ -368,12 +368,26 @@
 .top-header.top-header-favorit .author-thumb {
     float: left;
     margin-right: 30px;
+    
 }
 .top-header.top-header-favorit .author-content {
     text-align: left;
     margin-top: 20px;
     float: left;
     color: #fff;
+    
+}
+
+#user-profile-pic{
+position: absolute;
+  left:-10000%; right: -10000%; 
+  top: -10000%; bottom: -10000%;
+  margin: auto auto;
+  min-width: 1000%;
+  min-height: 1000%;
+  -webkit-transform:scale(0.1);
+  transform: scale(0.1);
+    
 }
 .top-header.top-header-favorit .author-name {
     color: #fff;
