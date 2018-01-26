@@ -41,4 +41,48 @@ public class LoveRepository {
 
 
     }
+    public static void registerLove(int userId, int postId){
+        Connection connection = DBConnection.getConnection();
+        boolean alreadyLoved = false;
+        for(Love l : getLovesForPost(postId)){
+            if(l.getUserId() == userId){
+                alreadyLoved = true;
+            }
+
+        }
+        if(alreadyLoved)
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE  FROM Loves WHERE post_id = ? AND user_id = ?");
+            preparedStatement.setInt(1,postId);
+            preparedStatement.setInt(2,userId);
+
+            preparedStatement.executeUpdate();
+
+
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        else{
+            try{
+                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Loves(user_id, post_id) VALUES (?,?)");
+                preparedStatement.setInt(1,userId);
+                preparedStatement.setInt(2,postId);
+
+                preparedStatement.executeUpdate();
+
+
+
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+
+
+        }
+
+
+
+    }
 }

@@ -47,4 +47,21 @@ public class PostRepository {
 
 
     }
+
+    public static void removePost(int postId){
+        Connection connection = DBConnection.getConnection();
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Timeline_Posts WHERE id = ?");
+            preparedStatement.setInt(1,postId);
+           preparedStatement.executeUpdate();
+
+
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+
+    }
 }
